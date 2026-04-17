@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de prueba</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+        }
+        .card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+        p {
+            color: #555;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            background: #0056d6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .btn-submit:hover {
+            background: #003ea1;
+        }
+        .success {
+            background: #e6ffed;
+            border: 1px solid #b9f0c8;
+            color: #1d7a3b;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Bienvenido</h1>
+        <p>Este es un formulario de prueba. Envía un mensaje y verás la respuesta en pantalla.</p>
+
+        {% if submitted_data %}
+            <div class="success">
+                <strong>Gracias por enviar el formulario.</strong>
+                <p><strong>Nombre:</strong> {{ submitted_data.name }}</p>
+                <p><strong>Correo:</strong> {{ submitted_data.email }}</p>
+                <p><strong>Mensaje:</strong> {{ submitted_data.message }}</p>
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.message.label_tag }}
+                {{ form.message }}
+                {{ form.message.errors }}
+            </div>
+            <button type="submit" class="btn-submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

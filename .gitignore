@@ -1,0 +1,6 @@
+.env
+.dockerignore
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
