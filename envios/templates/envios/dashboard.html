@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2>Dashboard</h2>
+        <p class="text-muted mb-0">Resumen de encomiendas y últimos movimientos.</p>
+    </div>
+    <a href="{% url 'encomienda_crear' %}" class="btn btn-primary">Nueva encomienda</a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card shadow-sm border-start border-4 border-primary bg-soft">
+            <div class="card-body">
+                <h6 class="text-uppercase text-muted">Total</h6>
+                <h3 class="mb-0">{{ total }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm border-start border-4 border-success bg-soft">
+            <div class="card-body">
+                <h6 class="text-uppercase text-muted">Activas</h6>
+                <h3 class="mb-0">{{ activas }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm border-start border-4 border-info bg-soft">
+            <div class="card-body">
+                <h6 class="text-uppercase text-muted">En tránsito</h6>
+                <h3 class="mb-0">{{ en_transito }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm border-start border-4 border-danger bg-soft">
+            <div class="card-body">
+                <h6 class="text-uppercase text-muted">Retrasadas</h6>
+                <h3 class="mb-0">{{ retrasadas }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title mb-3">Últimas encomiendas</h4>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Fecha registro</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for enc in ultimas %}
+                    <tr>
+                        <td>{{ enc.id }}</td>
+                        <td>{{ enc.codigo }}</td>
+                        <td>{{ enc.descripcion_corta }}</td>
+                        <td><span class="badge bg-{{ enc.estado_badge }}">{{ enc.get_estado_display }}</span></td>
+                        <td>{{ enc.fecha_registro|date:'Y-m-d' }}</td>
+                        <td><a href="{% url 'encomienda_detalle' enc.id %}" class="btn btn-sm btn-outline-primary">Ver</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">No hay encomiendas disponibles.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

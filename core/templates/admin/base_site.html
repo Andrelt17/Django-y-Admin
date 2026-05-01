@@ -1,0 +1,260 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}Sistema de Envíos | Admin{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{{ site_url|default:'#' }}">Sistema de Envíos</a></h1>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+body#admin-page {
+    background: radial-gradient(circle at top, rgba(13, 110, 253, 0.14), transparent 38%),
+                linear-gradient(180deg, #f6f9ff 0%, #e9f1fb 100%);
+}
+#header {
+    background-color: #206c9e !important;
+    border-bottom: 4px solid #15446e !important;
+}
+#header h1, #header .user-tools a {
+    color: #f8fbff !important;
+}
+#header .user-tools a:hover {
+    color: #d1e2ff !important;
+}
+#branding #site-name {
+    font-size: 1.55rem;
+    letter-spacing: 0.04em;
+}
+#breadcrumbs {
+    background: rgba(255,255,255,0.96);
+    border-radius: 0.85rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 12px 24px rgba(15, 64, 109, 0.08);
+    margin-bottom: 1rem;
+}
+#breadcrumbs a {
+    color: #1b4f7d;
+}
+#breadcrumbs a:hover {
+    color: #0d6efd;
+}
+#container {
+    padding-top: 1rem;
+}
+#content {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+#content-main {
+    background: #ffffff;
+    border: 1px solid #dce8f4;
+    border-radius: 1.3rem;
+    box-shadow: 0 24px 60px rgba(15, 64, 109, 0.08);
+    padding: 1.8rem;
+}
+.object-tools {
+    margin-bottom: 1.25rem;
+}
+.object-tools a.addlink {
+    border-radius: 999px;
+    background: #206c9e;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    box-shadow: 0 14px 30px rgba(32, 108, 158, 0.18);
+}
+.object-tools a.addlink:hover {
+    background: #16476d;
+}
+#content-main .search-form {
+    background: #f7fbff;
+    border: 1px solid #dce8f4;
+    border-radius: 1rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+}
+#content-main .search-form input[type="search"],
+#content-main .search-form .button {
+    border-radius: 0.85rem;
+}
+#content-main .search-form .search-field {
+    width: 100%;
+    min-width: auto;
+}
+#changelist-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 1.5rem;
+    align-items: start;
+}
+#changelist-form .search-form,
+#changelist-form .object-tools,
+#changelist-form .module:first-child {
+    grid-column: 1 / span 2;
+}
+#changelist-form .results {
+    grid-column: 1 / 2;
+}
+#changelist-filter {
+    background: #f7fbff;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid #dce8f4;
+    margin-top: 0;
+    width: 100%;
+    align-self: start;
+}
+#changelist-filter .filter {
+    margin-bottom: 0.75rem;
+}
+#changelist-filter .filter a {
+    color: #1b4f7d;
+    font-weight: 600;
+}
+#changelist-filter .filter a:hover {
+    color: #0d6efd;
+}
+#changelist-filter .related-widget-wrapper {
+    margin-top: 0.5rem;
+}
+.module,
+.dashboard-module .module,
+.changeform .module,
+.inline-related,
+.inline-group,
+#changelist-filter,
+#changelist-form {
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #dce8f4;
+    box-shadow: 0 14px 32px rgba(15, 64, 109, 0.06);
+    background: #ffffff;
+}
+.module caption {
+    padding: 1rem 1.2rem;
+    background: #206c9e;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+.module h2,
+.changeform h2,
+.inline-related h2 {
+    color: #173f6c;
+}
+#changelist-form {
+    padding: 1rem;
+}
+#content-main table {
+    background: #ffffff;
+}
+#content-main table th,
+#content-main table td {
+    padding: 1rem 0.9rem;
+}
+#content-main table th {
+    background: #eef5ff;
+    color: #1d4f8f;
+    border-bottom: none;
+}
+#content-main table tr:nth-child(even) {
+    background: #fbfdff;
+}
+#content-main table tbody tr:hover {
+    background: #edf4ff;
+}
+.inline-group .form-row {
+    border-bottom: 1px solid #eef3f8;
+    padding: 0.95rem 1rem;
+}
+.inline-group .form-row:last-child {
+    border-bottom: none;
+}
+.submit-row {
+    padding-top: 1rem;
+}
+small {
+    color: #5f7d98;
+}
+.footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #5f7d98;
+}
+@media (max-width: 991px) {
+    #breadcrumbs {
+        padding: 0.75rem 0.9rem;
+    }
+    #content-main {
+        padding: 1.4rem;
+    }
+    #content-main .search-form .search-field {
+        width: 100%;
+        min-width: auto;
+    }
+}
+#changelist-form {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 320px !important;
+    gap: 1.4rem !important;
+    align-items: start !important;
+}
+#changelist-form > .module,
+#changelist-form > .object-tools,
+#changelist-form > .search-form {
+    grid-column: 1 / span 2 !important;
+}
+#changelist-form #changelist-filter {
+    grid-column: 2 / 3 !important;
+    order: 2 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+}
+#changelist-form .results,
+#changelist-form #result_list {
+    grid-column: 1 / 2 !important;
+    order: 1 !important;
+}
+#content-main .search-form {
+    margin-bottom: 1.4rem !important;
+}
+#content-main #changelist-filter {
+    max-width: 320px !important;
+}
+#content-main .action-form {
+    grid-column: 1 / span 2 !important;
+}
+#content-main .module.caption,
+#content-main #content-main {
+    width: 100% !important;
+}
+#changelist-form {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+}
+#changelist-form > .search-form,
+#changelist-form > .object-tools,
+#changelist-form > .module:first-child,
+#changelist-form > #result_list,
+#changelist-form > .results {
+    width: 100% !important;
+}
+#changelist-form #changelist-filter {
+    width: 320px !important;
+    flex: 0 0 320px !important;
+    order: 2 !important;
+    margin-left: 1rem !important;
+}
+#changelist-form #result_list,
+#changelist-form .results {
+    flex: 1 1 minmax(0, calc(100% - 340px)) !important;
+    order: 1 !important;
+}
+#changelist-form #changelist-filter .module {
+    width: 100% !important;
+}
+</style>
+{% endblock %}

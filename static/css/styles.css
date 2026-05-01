@@ -1,0 +1,101 @@
+.navbar-brand {
+    font-weight: 700;
+}
+.login-card {
+    border-radius: 1rem;
+}
+.login-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0d6efd;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: 0 0.75rem 1.5rem rgba(13, 110, 253, 0.15);
+}
+.card-shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+.table thead th {
+    vertical-align: middle;
+}
+.bg-soft {
+    background-color: rgba(13, 110, 253, 0.08);
+}
+.badge-status {
+    min-width: 110px;
+}
+.form-text {
+    font-size: 0.875rem;
+}
+
+.login-page {
+    min-height: calc(100vh - 4rem);
+    background: radial-gradient(circle at top, rgba(13, 110, 253, 0.2), transparent 38%),
+                linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.login-card {
+    width: min(100%, 430px);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: #ffffff;
+    animation: popIn 0.8s ease-out;
+}
+
+.login-card-header {
+    background: linear-gradient(135deg, #0d6efd, #2580d9);
+    position: relative;
+}
+
+.login-card-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.35), transparent 35%),
+                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.15), transparent 18%);
+}
+
+.login-card-header h2,
+.login-card-header p,
+.login-card-header .login-logo {
+    position: relative;
+    z-index: 1;
+}
+
+.login-form .form-control {
+    border-radius: 0.9rem;
+    padding: 0.95rem 1rem;
+}
+
+.login-form .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.16);
+}
+
+.login-form .btn-primary {
+    border-radius: 999px;
+    padding: 0.95rem 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 16px 30px rgba(13, 110, 253, 0.16);
+}
+
+.login-form .alert {
+    border-radius: 1rem;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

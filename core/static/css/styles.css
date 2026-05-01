@@ -1,0 +1,18 @@
+.navbar-brand {
+    font-weight: 700;
+}
+.card-shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+.table thead th {
+    vertical-align: middle;
+}
+.bg-soft {
+    background-color: rgba(13, 110, 253, 0.08);
+}
+.badge-status {
+    min-width: 110px;
+}
+.form-text {
+    font-size: 0.875rem;
+}

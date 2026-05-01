@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Bienvenido{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Bienvenido al sistema de encomiendas</h1>
+    <p class="lead">Usa el menú superior para navegar entre el dashboard, el listado y la creación de encomiendas.</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-primary">Ir al dashboard</a>
+</div>
+{% endblock %}
