@@ -66,7 +66,7 @@ class Encomienda(models.Model):
 
     def save(self, *args, **kwargs):
         if self.costo is None and self.ruta and self.peso is not None:
-            self.costo = self.ruta.precio_base * self.peso
+            self.costo = (self.ruta.precio_base * Decimal(str(self.peso))).quantize(Decimal('0.01'))
         self.full_clean()
         super().save(*args, **kwargs)
 

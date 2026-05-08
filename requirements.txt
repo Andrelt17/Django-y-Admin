@@ -1,2 +1,8 @@
 Django>=6.0,<7.0
 psycopg2-binary
+djangorestframework
+djangorestframework-simplejwt
+django-filter
+drf-spectacular
+django-cors-headers
+redis
